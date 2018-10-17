@@ -1,0 +1,19 @@
+{
+  "name": "cryptee-core",
+  "version": "1.0.0",
+  "description": "Library for data encryption using Trezor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasRada/cryptee-core.git"
+  },
+  "author": "LukasRada",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/LukasRada/cryptee-core/issues"
+  },
+  "homepage": "https://github.com/LukasRada/cryptee-core#readme"
+}
