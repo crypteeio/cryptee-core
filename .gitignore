@@ -2,3 +2,4 @@
 /dist
 /coverage
 /npm
+/.coveralls.yml

@@ -7,7 +7,7 @@
     "build": "shx rm -rf dist && webpack --config ./webpack/config.prod.babel.js --progress",
     "build:npm": "shx rm -rf npm && tsc -p ./tsconfig.npm.json && shx cp LICENSE ./npm && shx cp package.json ./npm",
     "compile": "tsc",
-    "test": "jest"
+    "test": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "babel-preset-stage-1": "^6.5.0",
     "babel-register": "^6.11.5",
     "jest": "^23.6.0",
+    "coveralls": "3.0.2",
     "ts-jest": "^23.10.4",
     "ts-loader": "^5.2.2",
     "typescript": "^3.1.3",
