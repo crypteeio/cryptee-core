@@ -1,15 +1,16 @@
 import { BIP49_PATH, PADDING, PADDING_CHAR, TREZOR_MAX_PAYLOAD_SIZE } from '../constants'
 import TrezorConnect from 'trezor-connect'
+import { encodeUnicodeToHex, padEnd, groupByLength } from '../utils/string-converters'
 
-export const format = (text: string) => {
-    const encoded = text.encodeUnicodeToHex()
+export const encode = (text: string) => {
+    const encoded = encodeUnicodeToHex(text)
     const padding = Math.ceil(encoded.length / PADDING) * PADDING
-    const padded = encoded.padEnd(padding, PADDING_CHAR)
-    return padded.groupByLength(TREZOR_MAX_PAYLOAD_SIZE)
+    const padded = padEnd(encoded, padding, PADDING_CHAR)
+    return groupByLength(padded, TREZOR_MAX_PAYLOAD_SIZE)
 }
 
 export const encryptText = async (text: string, key: string) => {
-    const formattedText = format(text)
+    const formattedText = encode(text)
 
     const bundle = formattedText.map((item, index) => ({
         path: BIP49_PATH,
@@ -24,7 +25,7 @@ export const encryptText = async (text: string, key: string) => {
 
     let encrypted: string;
     if (cipherKeyValueResult.success) {
-        encrypted = cipherKeyValueResult.payload.map(item => item.value).join('');
+        encrypted = cipherKeyValueResult.payload.map(item => item.value).join('')
     }
     
     return encrypted;

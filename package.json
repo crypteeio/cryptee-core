@@ -23,7 +23,6 @@
     "trezor-connect": "6.0.0"
   },
   "devDependencies": {
-    "path": "^0.12.7",
     "fs-extra": "7.0.0",
     "@types/jest": "^23.3.5",
     "babel-cli": "^6.11.4",

@@ -1,12 +1,13 @@
 import TrezorConnect from 'trezor-connect'
 import { BIP49_PATH, PADDING, PADDING_CHAR, TREZOR_MAX_PAYLOAD_SIZE } from '../constants'
+import { decodeHexToUnicode, groupByLength } from '../utils/string-converters'
 
-export const format = (text: string) => text.groupByLength(TREZOR_MAX_PAYLOAD_SIZE)
+export const decode = (text: string) => groupByLength(text, TREZOR_MAX_PAYLOAD_SIZE)
 
 export const decryptText = async (encrypted: string, key: string) => {
-    const formattedText = format(encrypted)
+    const decoded = decode(encrypted)
 
-    const bundle = formattedText.map((item, index) => ({
+    const bundle = decoded.map((item, index) => ({
         path: "m/49'/0'/0'",
         key,
         value: item,
@@ -19,8 +20,8 @@ export const decryptText = async (encrypted: string, key: string) => {
 
     let result: string;
     if (cipherKeyValueResult.success) {
-        const text = cipherKeyValueResult.payload.map(item => item.value).join('');  
-        result = text.groupByLength(4).map(group => group.decodeHexToUnicode()).join('')      
+        const text = cipherKeyValueResult.payload.map(item => item.value).join('')
+        result = groupByLength(text, 4).map(decodeHexToUnicode).join('')
     }
     
     return result
