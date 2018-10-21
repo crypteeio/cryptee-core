@@ -6,7 +6,6 @@
     "module": "esnext",
     "target": "es5",
     "declaration": true,
-    "inlineSourceMap": true,
     "lib": [
       "es2015",
       "es6",
