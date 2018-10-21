@@ -8,5 +8,5 @@ node_js:
 script:
   - npm install -g yarn
   - npm install -g shx
-  - npm install
+  - yarn
   - make build
