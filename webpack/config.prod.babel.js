@@ -5,7 +5,6 @@ import {
     NODE_MODULES
 } from './constants';
 import path from "path";
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 module.exports = {
     mode: 'production',
