@@ -1,11 +1,11 @@
 {
   "name": "cryptee-core",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Library for data encryption using Trezor.",
   "main": "dist/cryptee-core.js",
   "scripts": {
     "build": "shx rm -rf dist && webpack --config ./webpack/config.prod.babel.js --progress",
-    "build:npm": "shx rm -rf npm && tsc -p ./tsconfig.npm.json && shx cp LICENSE ./npm && shx cp package.json ./npm",
+    "build:npm": "shx rm -rf npm && webpack --config ./webpack/config.npm.babel.js --progress && shx cp LICENSE ./npm && shx cp package.json ./npm",
     "compile": "tsc",
     "test": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },

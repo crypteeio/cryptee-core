@@ -4,9 +4,16 @@
     "outDir": "./npm/lib/",
     "noImplicitAny": true,
     "module": "esnext",
-    "target": "es2015",
+    "target": "es5",
     "declaration": true,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "lib": [
+      "es2015",
+      "es6",
+      "dom",
+      "es2017"
+    ],
+    "downlevelIteration": true
   },
   "include": [
     "src/**/*"
