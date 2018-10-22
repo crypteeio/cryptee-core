@@ -1,25 +1,20 @@
+import { range } from "./common";
+
 export const groupByLength = (value: string, length: number) => {
-    const groups = value.match(new RegExp(`([a-z0-9]){${length}}|([a-z0-9]){1,}`, 'gi'))
-    const range = Math.ceil(value.length / length)
-    return [...Array(range).keys()].map(index => groups[index])
+    const groups = value.match(new RegExp(`([a-z0-9]){${length}}|([a-z0-9]){1,}`, 'gi')) || []
+    const groupCount = Math.ceil(value.length / length)
+    return range(groupCount).map(index => groups[index])
 }
 
-export const encodeUnicodeToHex = (value: string) => {
-    let result = "";
-    [...Array(value.length).keys()].forEach(index => {
-        const hexCharCode = value.charCodeAt(index).toString(16)
-        result += ("000" + hexCharCode).slice(-4)
-    })
-    return result
-}
+export const encodeUnicodeToHex = (value: string) => range(value.length)
+    .map(index => ("000" + value.charCodeAt(index).toString(16)).slice(-4))
+    .join('')
 
 export const decodeHexToUnicode = (value: string) => {
     const groups = value.match(/[a-z0-9]{1,4}/gi) || [];
-    return [...Array(groups.length).keys()]
+    return range(groups.length)
         .map(index => String.fromCharCode(parseInt(groups[index], 16)))
         .join('')
 }
 
-export const padEnd = (value: string, count: number, char: string) => {
-    return value + [...Array(count - value.length).keys()].map(() => char).join('')
-}
+export const padEnd = (value: string, count: number, char: string) => value + char.repeat(count - value.length)
