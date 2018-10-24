@@ -1,4 +1,4 @@
-# cryptee-core version 1.0.3
+# cryptee-core version 1.0.5
 Library for data encryption using Trezor.
 
 ![](https://travis-ci.com/LukasRada/cryptee-core.svg?branch=master)
