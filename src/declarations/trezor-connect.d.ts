@@ -13,17 +13,32 @@ interface CipherKeyValueBundle {
 
 type CipherKeyValueInput = CipherKeyValueItem | CipherKeyValueBundle
 
-interface CipherKeyValueOutputPayload {
-    value: string
+type CipheredKeyValue = {
+    value: string,
 }
 
-interface CipherKeyValueOutput {
-    success: boolean
-    payload: CipherKeyValueOutputPayload[]
+type Unsuccessful = {
+    success: false,
+    payload: {
+        error: string,
+    }
 }
 
-interface TrezorConnect {
-    cipherKeyValue: (input: CipherKeyValueInput) => CipherKeyValueOutput
+type CipherKeyValueItemOutput = {
+    success: true,
+    payload: CipheredKeyValue,
+} | Unsuccessful
+
+type CipherKeyValueBundleOutput = {
+    success: true,
+    payload: CipheredKeyValue[],
+} | Unsuccessful
+
+declare function CipherKeyValue(input: CipherKeyValueItem): CipherKeyValueItemOutput
+declare function CipherKeyValue(input: CipherKeyValueBundle): CipherKeyValueBundleOutput
+
+interface TrezorConnect {   
+    cipherKeyValue: typeof CipherKeyValue
 }
 
 declare module 'trezor-connect' {
