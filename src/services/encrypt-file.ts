@@ -1,23 +1,8 @@
 import TrezorConnect from 'trezor-connect'
-import { BIP49_PATH, PADDING, PADDING_CHAR, TREZOR_MAX_PAYLOAD_SIZE } from '../constants'
-import { readFileAsync } from '../utils/read-file-async'
-import { padEnd, groupByLength } from '../utils/string-converters'
-import { toHexString } from '../utils/number-converters'
+import { BIP49_PATH } from '../constants'
+import { CrypteeFile } from '../models/CrypteeFile';
 
-export const encode = async (file: File) => {
-    const byteArray = await readFileAsync(file);
-    const hexString = byteArray.map(toHexString).join('')
-
-    const padMultiple = Math.ceil(hexString.length / PADDING);
-    const hexPadded = padEnd(hexString, (padMultiple * PADDING), PADDING_CHAR);
-    const zeroPaddingLength = hexString.length % PADDING
-    
-    return { value: groupByLength(hexPadded, TREZOR_MAX_PAYLOAD_SIZE), padding: zeroPaddingLength > 0 ? (PADDING - zeroPaddingLength) : 0 }
-}
-
-export const encryptFile = async (file: File, key: string) => {
-    const encodedFile = await encode(file)
-
+export const encryptFile = async (encodedFile: CrypteeFile, key: string) => {
     // progress total?
     const bundle = encodedFile.value.map((item, index) => ({
         path: BIP49_PATH,

@@ -7,7 +7,8 @@
     "build": "shx rm -rf dist && webpack --config ./webpack/config.prod.babel.js --progress",
     "build:npm": "shx rm -rf npm && shx mkdir ./npm && shx cp LICENSE ./npm && shx cp package.json ./npm && babel-node ./tools/build.js && webpack --config ./webpack/config.npm.babel.js --progress",
     "compile": "tsc",
-    "test": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "test": "jest",
+    "test:coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",

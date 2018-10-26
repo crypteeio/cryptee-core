@@ -1,7 +1,6 @@
-import { encryptText } from "../../src/services/encrypt-text"
+import { decryptText } from "../../src/services/decrypt-text"
 
-describe("Encrypt text", () => {
-    // TODO: fix broken test
+describe("Decrypt text", () => {
     test("TrezorConnect.cipherKeyValue called once", () => {
         const cipherKeyValueMock = jest.fn(() => ({
             success: false,
@@ -16,7 +15,7 @@ describe("Encrypt text", () => {
             }
         });
         // async/await throws runtime timeout exception
-        encryptText(["123456789"], "test").then(() => {
+        decryptText(["123456789"], "test").then(() => {
             expect(cipherKeyValueMock.mock.calls.length).toEqual(1);
         });
     });

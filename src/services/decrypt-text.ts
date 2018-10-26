@@ -1,13 +1,9 @@
 import TrezorConnect from 'trezor-connect'
-import { BIP49_PATH, TREZOR_MAX_PAYLOAD_SIZE } from '../constants'
+import { BIP49_PATH } from '../constants'
 import { decodeHexToUnicode, groupByLength } from '../utils/string-converters'
 
-export const decode = (text: string) => groupByLength(text, TREZOR_MAX_PAYLOAD_SIZE)
-
-export const decryptText = async (encrypted: string, key: string) => {
-    const decoded = decode(encrypted)
-
-    const bundle = decoded.map((item, index) => ({
+export const decryptText = async (decodeText: string[], key: string) => {
+    const bundle = decodeText.map((item, index) => ({
         path: BIP49_PATH,
         key,
         value: item,
