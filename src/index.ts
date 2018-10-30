@@ -6,6 +6,7 @@ import { encodeFile } from './services/encode-file'
 import { encryptFile } from './services/encrypt-file'
 import { decodeFile } from './services/decode-file'
 import { decryptFile } from './services/decrypt-file'
+import { readFileAsync } from './utils/read-file-async'
 
 export {
     encodeText,
@@ -16,4 +17,5 @@ export {
     encryptFile,
     decodeFile,
     decryptFile,
+    readFileAsync,
 }
