@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LukasRada/cryptee-core.git"
+    "url": "git+https://github.com/crypteeio/cryptee-core.git"
   },
   "author": "LukasRada",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LukasRada/cryptee-core/issues"
+    "url": "https://github.com/crypteeio/cryptee-core/issues"
   },
-  "homepage": "https://github.com/LukasRada/cryptee-core#readme",
+  "homepage": "https://github.com/crypteeio/cryptee-core#readme",
   "dependencies": {
     "trezor-connect": "6.0.0"
   },
