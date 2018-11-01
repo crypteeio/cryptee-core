@@ -1,0 +1,12 @@
+sudo: false
+language: node_js
+dist: trusty
+
+node_js:
+  - "9"
+
+script:
+  - npm install -g yarn
+  - npm install -g shx
+  - yarn
+  - make build
