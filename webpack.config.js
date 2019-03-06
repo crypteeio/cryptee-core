@@ -1,21 +1,15 @@
-import {
-    DIST,
-    LIB_NAME,
-    TS_SRC,
-    NODE_MODULES
-} from './constants';
-import path from "path";
+var path = require('path');
 
 module.exports = {
     mode: 'production',
     entry: {
-        'cryptee-core': `${TS_SRC}/index.ts`
+        'index': `./src/index.ts`,
     },
     output: {
         filename: 'js/[name].[hash].js',
-        path: DIST,
+        path: path.join(__dirname, 'dist'),
         publicPath: './',
-        library: LIB_NAME,
+        library: 'CrypteeCore',
         libraryTarget: 'umd',
         libraryExport: 'default'
     },
@@ -26,12 +20,19 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'ts-loader',
                 options: { configFile: 'tsconfig.prod.json' }
-            }
+            },
         ]
     },
     resolve: {
         extensions: [ '.ts', '.js' ],
-        modules: [ TS_SRC, NODE_MODULES ]
+        modules: [ './src/index.ts', 'node_modules' ],
     },
-    externals: ['trezor-connect']
+    performance: {
+        hints: false
+    },
+    plugins: [],
+    externals: ['trezor-connect'],
+    optimization: {
+        minimize: false
+    }
 }

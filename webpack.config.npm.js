@@ -1,21 +1,15 @@
-import {
-    TS_SRC,
-    LIB,
-    LIB_NAME,
-    NODE_MODULES,
-} from './constants';
+var path = require('path');
 
 module.exports = {
     mode: 'production',
     entry: {
-        'index': `${TS_SRC}/index.ts`,
+        'index': './src/index.ts',
     },
     output: {
-        path: LIB,
+        path: path.join(__dirname, 'npm/lib/'),
         publicPath: './',
-        library: LIB_NAME,
-        libraryTarget: 'umd',
-        //libraryExport: 'default'
+        library: 'CrypteeCore',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [
@@ -29,7 +23,7 @@ module.exports = {
     },
     resolve: {
         extensions: [ '.ts', '.js' ],
-        modules: [ TS_SRC, NODE_MODULES ],
+        modules: [ './src/index.ts', 'node_modules' ],
     },
     performance: {
         hints: false

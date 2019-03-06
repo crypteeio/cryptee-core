@@ -1,6 +1,6 @@
-import fs from 'fs-extra';
-import path from 'path';
-import packageJSON from '../package.json';
+var fs = require('fs-extra')
+var path  = require('path')
+var packageJSON = require('../package.json')
 
 const npm = path.resolve(__dirname, '../npm');
 
