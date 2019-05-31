@@ -1,6 +1,6 @@
 {
   "name": "cryptee-core",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Library for data encryption using Trezor.",
   "main": "dist/cryptee-core.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/LukasRada/cryptee-core#readme",
   "dependencies": {
-    "trezor-connect": "7.0.1"
+    "trezor-connect": "7.0.3"
   },
   "devDependencies": {
     "@types/jest": "24.0.9",
@@ -30,7 +30,7 @@
     "jest": "24.1.0",
     "ts-jest": "24.0.0",
     "ts-loader": "5.3.3",
-    "typescript": "3.3.3333",
+    "typescript": "3.5.1",
     "webpack": "4.29.6",
     "webpack-cli": "3.2.3"
   }
