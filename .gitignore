@@ -4,3 +4,4 @@
 /npm
 /.coveralls.yml
 yarn-error.log
+.vscode
